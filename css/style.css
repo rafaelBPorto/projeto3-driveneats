@@ -99,7 +99,6 @@ main .cardapio {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
     background-color: #FFFFFF;
 }
 
@@ -181,4 +180,9 @@ footer .center{
     font-size: 15px;
     line-height: 15px;
     }
+}
+
+.item-selecionado{
+    box-shadow: inset 0px 0px 0px 6px green;
+    position: relative;
 }
