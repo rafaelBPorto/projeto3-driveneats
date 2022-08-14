@@ -207,3 +207,93 @@ footer .center{
     background-color: green;
     cursor: pointer;
 }
+
+
+.confirmacao{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.75);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    
+}
+
+.confirmacao .quadro-pedidos{
+    margin-right: auto;
+    margin-left: auto;
+    width: 90vw;
+    height: 40vh;
+    background-color: rgb(80,208,116);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 5px 6px 10px 0px gray;
+
+
+}
+
+.lista-pedidos{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+.item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.quadro-pedidos h1{
+    font-family: 'Roboto';
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 26px;
+    text-align: center;
+}
+.item h3{
+    color: white;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: 0.018em;
+}
+
+.quadro-pedidos .botao-confirmacao{
+    width: 80%;
+    height: 52px;
+    background-color: #FFFFFF;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3em;
+    
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.0018em;
+    color: rgb(80, 208, 116);
+
+    cursor: pointer;
+
+}
+
+.esconde-confirmacao{
+    display: none;
+}
+
+.cancelar-pedido{
+    cursor: pointer;
+}

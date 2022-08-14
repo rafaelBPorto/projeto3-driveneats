@@ -12,6 +12,9 @@ let valorPrato
 let valorBebida
 let valorSobremesa
 
+let nomeCliente
+let enderecoCliente
+
 function selecionarPrato(prato) {
 
     const itemSelecionado = document.querySelector('.prato .item-selecionado');
@@ -30,7 +33,13 @@ function selecionarPrato(prato) {
     console.log(valorPrato);
 
     pratoSelecionado = true;
+    
     habilitarPedido();
+
+    const itemPrato = document.querySelector('.lista-pedidos .prato h3:nth-child(1)');
+    const precoPrato = document.querySelector('.lista-pedidos .prato h3:nth-child(2)');
+    itemPrato.innerHTML = nomePrato;
+    precoPrato.innerHTML = valorPrato;
 }
 
 function selecionarBebida(bebida) {
@@ -52,6 +61,12 @@ function selecionarBebida(bebida) {
 
     bebidaSelecionada = true;
     habilitarPedido();
+
+    const itemBebida = document.querySelector('.lista-pedidos .bebida h3:nth-child(1)');
+    const precoBebida = document.querySelector('.lista-pedidos .bebida h3:nth-child(2)');
+    
+    itemBebida.innerHTML = nomeBebida;
+    precoBebida.innerHTML = valorBebida;
 }
 
 function selecionarSobremesa(item) {
@@ -74,6 +89,12 @@ function selecionarSobremesa(item) {
     sobremesaSelecionada = true;
     habilitarPedido();
 
+    const itemSobremesa = document.querySelector('.lista-pedidos .sobremesa h3:nth-child(1)');
+    const precoSobremesa = document.querySelector('.lista-pedidos .sobremesa h3:nth-child(2)');
+    
+    itemSobremesa.innerHTML = nomeSobremesa;
+    precoSobremesa.innerHTML = valorSobremesa;
+
 }
 
 //Ativacao do botao de envio
@@ -95,14 +116,38 @@ function habilitarPedido() {
 
 }
 
+function confirmarPedido(){
+
+    const precoTotal = document.querySelector('.lista-pedidos .total h1:nth-child(2)');
+    let valorTotal = (Number(valorPrato) + Number(valorBebida) + Number(valorSobremesa)).toFixed(2);
+    
+    precoTotal.innerHTML = `R$ ${valorTotal}`;
+
+    const botaoPedido = document.querySelector('.confirmacao')
+
+    console.log(botaoPedido);
+    botaoPedido.classList.remove('esconde-confirmacao')
+    console.log(botaoPedido);
+
+    nomeCliente = prompt("Quem irá receber o pedido?")
+    enderecoCliente = prompt("Qual o endereço de entrega?")
+
+}
+
 function realizarPedido() {
     if (liberarPedido) {
         let valorTotal = (Number(valorPrato) + Number(valorBebida) + Number(valorSobremesa)).toFixed(2);
 
-        let texto = `Olá, Gostaria de fazer o pedido:\n - Prato: ${nomePrato}\n - Bebida: ${nomeBebida}\n - Sobremesa: ${nomeSobremesa}\n Total: R$ ${valorTotal}`;
+        let texto = `Olá, Gostaria de fazer o pedido:\n - Prato: ${nomePrato}\n - Bebida: ${nomeBebida}\n - Sobremesa: ${nomeSobremesa}\n Total: R$ ${valorTotal}\n\nNome: ${nomeCliente}\nEndereço: ${enderecoCliente}`;
         console.log(texto);
         texto = window.encodeURIComponent(texto);
 
         window.open("https://api.whatsapp.com/send/?phone=55011930413365&text="+texto);
+        location.reload();
+
     }
+}
+
+function cancelarPedido(){
+    location.reload();
 }
