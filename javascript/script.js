@@ -103,6 +103,6 @@ function realizarPedido() {
         console.log(texto);
         texto = window.encodeURIComponent(texto);
 
-        /*window.open("https://api.whatsapp.com/send/?phone=55011930413365&text="+texto);*/
+        window.open("https://api.whatsapp.com/send/?phone=55011930413365&text="+texto);
     }
 }
